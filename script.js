@@ -1,10 +1,9 @@
-// Ambil elemen DOM yang diperlukan
 const searchInput = document.getElementById('search-input');
 const searchBtn = document.getElementById('search-btn');
 const moviesContainer = document.getElementById('movies');
 
-// API key dari OMDb API
-const API_KEY = '512be3fd'; // Ganti dengan API key lo sendiri
+
+const API_KEY = '512be3fd';
 
 // Event listener untuk tombol search
 searchBtn.addEventListener('click', () => {
@@ -19,14 +18,14 @@ async function searchMovies(query) {
   const url = `https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`; // URL API
   try {
     const response = await fetch(url); // Panggil API
-    const data = await response.json(); // Parse hasil jadi JSON
+    const data = await response.json();
     if (data.Search) {
       displayMovies(data.Search); // Kalau ada hasil, tampilkan film
     } else {
       moviesContainer.innerHTML = '<p>No movies found.</p>'; // Kalau gak ada, kasih pesan
     }
   } catch (error) {
-    console.error('Error fetching movies:', error); // Tampilkan error di konsol
+    console.error('Error fetching movies:', error); // Tampilkan error di console
   }
 }
 
